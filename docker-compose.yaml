@@ -5,13 +5,12 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     hostname: pihole
-    domainname: example.com
-    mac_address: d0:ca:ab:cd:ef:01
+    domainname: nas.local
     cap_add:
       - NET_ADMIN
     networks:
       pihole_network:
-        ipv4_address: 192.168.29.199
+        ipv4_address: 192.168.29.200 # ipv4_Address & ServerIP will be the pihole admin page
     dns:
       - 127.0.0.1
       - 8.8.8.8
@@ -21,9 +20,11 @@ services:
       - 53/udp
       - 67/udp
       - 80/tcp
+      - 5000:5000
+      - 5001:5001
     environment:
-      ServerIP: 192.168.29.199
-      VIRTUAL_HOST: pihole.example.com
+      ServerIP: 192.168.29.200 # match ipv4_address
+      VIRTUAL_HOST: pihole.nas.local # hostname + domainname
       WEBPASSWORD: ""
     restart: unless-stopped
 
