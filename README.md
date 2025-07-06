@@ -1,3 +1,5 @@
+Why dedicate an entire raspberry pi to what a docker container can do? 
+
 # Setup:
 
 1. SSH to nas & run sudo docker-compose up -d
